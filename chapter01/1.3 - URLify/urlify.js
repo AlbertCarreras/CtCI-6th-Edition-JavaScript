@@ -21,4 +21,22 @@ var urlify = function(str, length) {
   return strArr.join('');
 };
 
-console.log(urlify('Mr John Smith    ', 13), 'Mr%20John%20Smith');
+
+// higher-level solutions
+
+//using encode()
+
+function urlify(string) {
+  return encodeURI(string.trim())
+}
+
+console.log(urlify("My name is Rodrigo") === "My%20name%20is%20Rodrigo")
+
+//using RegExp
+
+function urlify(string) {
+  let regExp = new RegExp('\\s', 'g')
+  return string.trim().replace(regExp, '%20')
+}
+
+console.log(urlify("My name is Rodrigo    ") === "My%20name%20is%20Rodrigo")
